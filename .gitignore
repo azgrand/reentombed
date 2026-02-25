@@ -1,21 +1,55 @@
-# Environments (Virtualenvs)
+# ==============================
+# Virtual Environments
+# ==============================
 .venv/
 venv/
 env/
 ENV/
 
-# PyCharm / JetBrains IDEs
-.idea/
-*.iws
-*.iml
-out/
+# ==============================
+# PyInstaller
+# ==============================
+build/
+dist/
+*.spec
 
-# Python caching and compiled files
+# ==============================
+# Python cache / compiled
+# ==============================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 
+# ==============================
+# IDEs
+# ==============================
+.idea/
+.vscode/
+*.iws
+*.iml
+out/
+
+# ==============================
 # OS generated files
+# ==============================
 .DS_Store
 Thumbs.db
+
+# ==============================
+# Logs
+# ==============================
+*.log
+
+# ==============================
+# Pytest / coverage (por si luego lo usas)
+# ==============================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ==============================
+# Temporary build artifacts
+# ==============================
+*.manifest
+*.exe

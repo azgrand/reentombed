@@ -5,6 +5,7 @@ import math
 import array
 from typing import List, Tuple, Dict
 import pygame
+from pathlib import Path
 
 # Import language literals
 from assets.lang import TEXTS
@@ -176,14 +177,21 @@ def run_game() -> None:
     teleport_sfx = generate_synthetic_sound(frequency=800.0, duration=0.2, volume=0.1)
 
     # Load external background music
-    music_path = os.path.join("assets", "music", "music.ogg")
+    def get_base_path():
+        if getattr(sys, "frozen", False):
+            return Path(sys._MEIPASS)
+        return Path(__file__).resolve().parent.parent
+    BASE_DIR = get_base_path()
+    music_path = BASE_DIR / "assets" / "music" / "music.ogg"
     try:
-        pygame.mixer.music.load(music_path)
-        pygame.mixer.music.set_volume(0.3)  # Adjust volume between 0.0 and 1.0
-        # -1 means loop indefinitely
+        pygame.mixer.music.load(str(music_path))
+        pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(loops=-1)
     except pygame.error as e:
-        print(f"Warning: Could not load background music from {music_path}. Running without music. Error: {e}")
+        print(f"Warning: Could not load background music from {music_path}")
+        print("Working directory:", Path.cwd())
+        print("File exists?:", music_path.exists())
+        print("Error:", e)
 
     display_info = pygame.display.Info()
     initial_width = int(display_info.current_w * 0.8)
