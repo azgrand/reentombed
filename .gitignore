@@ -1,0 +1,21 @@
+# Environments (Virtualenvs)
+.venv/
+venv/
+env/
+ENV/
+
+# PyCharm / JetBrains IDEs
+.idea/
+*.iws
+*.iml
+out/
+
+# Python caching and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# OS generated files
+.DS_Store
+Thumbs.db
